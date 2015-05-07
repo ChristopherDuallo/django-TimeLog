@@ -1,0 +1,55 @@
+<html lang="en">
+ <head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	   
+	   <title>Register</title>
+
+	    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+	    <link href="logme/templates/logme/style.css" rel="stylesheet">
+
+ </head>
+
+<body>
+		
+		 </br></br></br>
+  
+        <div class="container">
+             <div class="row">
+              <div class="col-sm-6 col-md-5 col-md-offset-4">
+                <h1 class="text-center login-title"><strong>User Register</strong></h1>
+					</br></br></br>
+                	<div class="form-group">
+                	<form action="" method="POST">
+                		{% csrf_token %}
+							{{form.errors}}
+			 
+		<div class="form-group">
+  
+			<strong>First name:</strong><input type="text" class="form-control" name="{{ form.first_name.html_name}}"> 
+			<br>
+			<strong>Last name:</strong><input type="text" class="form-control" name="{{ form.last_name.html_name}}"> 
+			<br>
+			<strong>Username:</strong><input type="text" class="form-control" name="{{ form.username.html_name}}"> 
+			<br>	
+			<strong>Password:</strong><input type="password" class="form-control" name="{{ form.password1.html_name}}">
+			<br>
+			<strong>Confirm Password:</strong><input type="password" class="form-control" name="{{ form.password2.html_name}}"> 
+			<br> 
+			<strong>Email Address:</strong><input type="text" class="form-control" name="{{ form.email.html_name}}"> 
+			<br>
+
+  				<button type="submit" class="btn btn-success"><span class= "glyphicon glyphicon-ok"></span> Submit</button>
+  				
+  				<button class="btn btn-danger"><span class= "glyphicon glyphicon-pencil"></span> Reset</button>
+
+  				<a href = "{%url 'logat:index' %}"><button type="button" class="btn btn-primary">Back</button></a>
+
+
+				</div>
+			</div>
+		  </div>	
+		</form>
+	</body>
+</html>

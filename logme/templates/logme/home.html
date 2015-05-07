@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+	
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link href="{{ STATIC_URL }}/logme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}/logme/css/style.css" rel="stylesheet">
+
+</head>	
+	<body>
+		
+		<form action="{% url 'logat:home' %}" method="POST"> 
+			{% csrf_token %}
+			
+			<div class = "container">	
+				</br></br><button class="btn btn-danger" type="logout" style="float:right;"><span class= "glyphicon glyphicon-off"></span></span> Logout</button><br>
+
+				<h1><p class= "text-center"> <strong> {{user.first_name}} {{user.last_name}}</p></h1></strong> 
+				<input type = 'hidden' name = 'logout' value="Logout">	
+				<h3><p class= "text-center"> <strong>Logged on: {{timein}}</strong></p></h3>
+				Today's Total Time: <strong> {{ today_total }} </strong>
+				</br></br></br></br>
+
+			</div> <!-- end of container -->
+
+			<div class = "container">
+				<table class="table table-hover">
+				<tr>
+					<th><div class="panel-heading"><h4><strong><p class= "text-center">Time In</h4></strong></p></div></th>
+					<th><div class="panel-heading"><h4><strong><p class= "text-center">Time Out</h4></strong></p></div></th>
+					<th><div class="panel-heading"><h4><strong><p class= "text-center">Total Time</h4></strong></p></div></th>
+				</tr>
+				
+				{% for show in sorts %} 
+										
+				<tr>	
+	 				<td><p class= "text-center">{{show.timein}}</p></td>
+	 				<td><p class= "text-center">{{show.timeout}}</p></td>	
+	 				<td><p class= "text-center">{{show.totaltime}}</p></td>
+	 										
+				{% endfor %}
+
+				</tr>
+				</table>
+		</form>
+	</body>
+</html>
